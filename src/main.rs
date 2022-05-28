@@ -54,24 +54,24 @@ fn main() {
                     let value = (value * 300.0).clamp(-255.0, 255.0) as i16;
                     match axis {
                         gilrs::Axis::LeftStickX => {
-                            data[gamepad_start + 20] = if value < 0 { (-value) as u8 } else { 0 };
-                            data[gamepad_start + 21] = if value < 0 { 0 } else { value as u8 };
+                            data[gamepad_start + 20] = if value < -200 { 1 } else { 0 };
+                            data[gamepad_start + 21] = if value > 200 { 1 } else { 0 };
                         }
                         gilrs::Axis::LeftStickY => {
-                            data[gamepad_start + 22] = if value < 0 { (-value) as u8 } else { 0 };
-                            data[gamepad_start + 23] = if value < 0 { 0 } else { value as u8 };
+                            data[gamepad_start + 22] = if value < -200 { 1 } else { 0 };
+                            data[gamepad_start + 23] = if value > 200 { 1 } else { 0 };
                         }
                         gilrs::Axis::LeftZ => {
                             data[gamepad_start + 24] = if value < 0 { (-value) as u8 } else { 0 };
                             data[gamepad_start + 25] = if value < 0 { 0 } else { value as u8 };
                         }
                         gilrs::Axis::RightStickX => {
-                            data[gamepad_start + 26] = if value < 0 { (-value) as u8 } else { 0 };
-                            data[gamepad_start + 27] = if value < 0 { 0 } else { value as u8 };
+                            data[gamepad_start + 26] = if value < -200 { 1 } else { 0 };
+                            data[gamepad_start + 27] = if value > 200 { 1 } else { 0 };
                         }
                         gilrs::Axis::RightStickY => {
-                            data[gamepad_start + 28] = if value < 0 { (-value) as u8 } else { 0 };
-                            data[gamepad_start + 29] = if value < 0 { 0 } else { value as u8 };
+                            data[gamepad_start + 28] = if value < -200 { 1 } else { 0 };
+                            data[gamepad_start + 29] = if value > 200 { 1 } else { 0 };
                         }
                         gilrs::Axis::RightZ => {
                             data[gamepad_start + 30] = if value < 0 { (-value) as u8 } else { 0 };
