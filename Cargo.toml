@@ -4,7 +4,7 @@ description = "Receive gamepad events and forward via Artnet. Can be used to con
 license = "MIT/Apache-2.0"
 authors = ["René Rössler <rene@freshx.de>"]
 repository = "https://github.com/elwerene/gamepad_artnet.git"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 
 [dependencies]
