@@ -1,5 +1,9 @@
 [package]
 name = "gamepad_artnet"
+description = "Receive gamepad events and forward via Artnet. Can be used to control QlcPlus and others"
+license = "MIT/Apache-2.0"
+authors = ["René Rössler <rene@freshx.de>"]
+repository = "https://github.com/elwerene/gamepad_artnet.git"
 version = "0.1.0"
 edition = "2021"
 
