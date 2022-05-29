@@ -10,7 +10,7 @@ edition = "2021"
 [dependencies]
 artnet_protocol = "0.4"
 clap = { version = "3.1", features = ["derive"] }
-crossbeam-channel = "0.5.4"
+crossbeam-channel = "0.5"
 env_logger = "0.9"
 gilrs = "0.9"
 log = "0.4"
