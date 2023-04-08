@@ -1,4 +1,4 @@
-use artnet_protocol::{ArtCommand, Output, PortAddress};
+use artnet_protocol::{ArtCommand, Output, PaddedData, PortAddress};
 use crossbeam_channel::{unbounded, Sender};
 use log::{error, info};
 use std::net::{ToSocketAddrs, UdpSocket};
@@ -27,14 +27,11 @@ pub fn start() -> Sender<Vec<u8>> {
                 .expect("Artnet universe is invalid!");
 
             for data in r.iter() {
-                let mut output = match Output::from(data.as_slice()) {
-                    Ok(output) => output,
-                    Err(err) => {
-                        error!("Could not convert data to artnet output: {err:?}");
-                        continue;
-                    }
+                let output = Output {
+                    data: PaddedData::from(data),
+                    port_address,
+                    ..Default::default()
                 };
-                output.port_address = port_address;
 
                 let command = ArtCommand::Output(output);
                 let _ = command
@@ -42,7 +39,7 @@ pub fn start() -> Sender<Vec<u8>> {
                     .map_err(|e| error!("Could not convert command into buffer: {:?}", e))
                     .map(|bytes| {
                         socket
-                            .send_to(&bytes, &addr)
+                            .send_to(&bytes, addr)
                             .map_err(|e| error!("Could not send data: {:?}", e))
                     });
             }
