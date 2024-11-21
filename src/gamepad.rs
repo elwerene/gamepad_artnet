@@ -8,7 +8,9 @@ pub fn listen(artnet_sender: Sender<Vec<u8>>) {
     let mut data = vec![0u8; 512];
     loop {
         match gilrs.next_event() {
-            Some(Event { id, event, time }) => {
+            Some(Event {
+                id, event, time, ..
+            }) => {
                 let gamepad_id: usize = id.into();
                 // why +8 ?
                 let gamepad_start = 8 + gamepad_id * 40;
